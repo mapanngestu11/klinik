@@ -61,12 +61,13 @@
                 <?php 
                 include 'koneksi.php';
                 $no = 1;
-                $tgl = date("d-M-Y");
-                $data = mysqli_query($koneksi,"SELECT * FROM Kwitansi WHERE tanggal = '$tgl' AND nama_pasien = 'aku' ");
+                $nama_pasien = $_GET['nama_pasien'];
+                $data = mysqli_query($koneksi,"SELECT * FROM Kwitansi Where nama_pasien ='$nama_pasien' ");
                 while($d = mysqli_fetch_array($data)){
                   ?>
                   <table >
                     <tr>
+                    
                       <th>Nama Pasien</th>
                       <th>:</th>
                       <th><?php echo $d['nama_pasien']; ?></th>
@@ -76,17 +77,79 @@
                       <th>:</th>
                       <th><?php echo $d['nama_dokter']; ?></th>
                     </tr>
+
                     <tr>
+                      
                       <th>Obat yang di berikan</th>
                       <th>:</th>
-                      <th><?php echo $d['obat1']; ?></th>
+                      <th><?php echo $d['obat1']; ?><th> &nbsp; &nbsp; Jumlah : &nbsp; <?php echo $d['jumlah1']; ?></th></th>
                     </tr>
-                   
+                     <tr>
+                      <th></th>
+                      <th>:</th>
+                      <th><?php echo $d['obat2']; ?> <th> &nbsp; &nbsp; Jumlah : &nbsp; <?php echo $d['jumlah2']; ?></th></th>
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <th>:</th>
+                      <th><?php echo $d['obat3']; ?> <th> &nbsp; &nbsp; Jumlah : &nbsp; <?php echo $d['jumlah3']; ?></th></th>
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <th>:</th>
+                      <th><?php echo $d['obat4']; ?> <th> &nbsp; &nbsp; Jumlah : &nbsp; <?php echo $d['jumlah4']; ?></th></th>
+                    </tr>
+                     <tr>
+                      <th>Total Harga</th>
+                      <th>:</th>
+                      <th>
+                      <?php  
+                        $total  = ($d['harga1'] * $d['jumlah1'])+($d['harga2'] * $d['jumlah2'])+($d['harga3'] * $d['jumlah3'])+($d['harga4'] * $d['jumlah4']);
+                         
+                         ?>
+                         Rp.
+                         <?php
+                           echo $total;
+                         ?>
+                      </th>
+                    </tr>
+                    <tr>
+                      <th>Jumlah Uang</th>
+                      <th>:</th>
+                      <th>Rp. <?php echo $d['jumlah_uang']; ?></th>
+                    </tr>
+                    <tr>
+                      <th>Uang Kembali</th>
+                      <th>:</th>
+                       <?php  
+                        $total  = ($d['harga1'] * $d['jumlah1'])+($d['harga2'] * $d['jumlah2'])+($d['harga3'] * $d['jumlah3'])+($d['harga4'] * $d['jumlah4']);
+                         
+                       $kemabalian = $d['jumlah_uang'] - $total ;
+
+                         ?>
+                     
+
+
+                      <th>Rp. <?php echo $kemabalian ; ?></th>
+                    </tr>
+                    <tr>
+                      <th>Tanggal</th>
+                      <th>:</th>
+                      <th><?php echo date('d-M-y'); ?></th>
+                    </tr>
+                    <tr>
+                      <th>Waktu</th>
+                      <th>:</th>
+                      <th><?php echo date("h:i:s"); ?></th>
+                    </tr>
+
                   </table>
 
                   <?php }
 
                   ?>
+                  <br>
+                  <a href="print-kwitansi.php" class="btn btn-primary btn-round"  style="float: right;"><span class="icons icon-printer"></span> Print</a>
                 </div>
               </div>
             </div>

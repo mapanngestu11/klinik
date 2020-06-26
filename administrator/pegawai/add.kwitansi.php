@@ -16,51 +16,51 @@
 
     <!--<![endif]-->
     <?php 
-include "koneksi.php";
-if(!$koneksi){
-  die ("Connection failed: ".mysqli_connect_error());
-}
+    include "koneksi.php";
+    if(!$koneksi){
+      die ("Connection failed: ".mysqli_connect_error());
+    }
  // TAMPILKAN DATA BARANG DAN HARGA
-$obat1=mysqli_query($koneksi, "SELECT * FROM obat");
-$jsArray = "var harga = new Array();\n"; 
+    $obat1=mysqli_query($koneksi, "SELECT * FROM obat");
+    $jsArray = "var harga = new Array();\n"; 
 
-?>
+    ?>
 
     <?php 
-include "koneksi.php";
-if(!$koneksi){
-  die ("Connection failed: ".mysqli_connect_error());
-}
+    include "koneksi.php";
+    if(!$koneksi){
+      die ("Connection failed: ".mysqli_connect_error());
+    }
  // TAMPILKAN DATA BARANG DAN HARGA
-$obat2=mysqli_query($koneksi, "SELECT * FROM obat");
-$jsArray = "var harga = new Array();\n"; 
+    $obat2=mysqli_query($koneksi, "SELECT * FROM obat");
+    $jsArray = "var harga = new Array();\n"; 
 
-?>
+    ?>
 
 
     <?php 
-include "koneksi.php";
-if(!$koneksi){
-  die ("Connection failed: ".mysqli_connect_error());
-}
+    include "koneksi.php";
+    if(!$koneksi){
+      die ("Connection failed: ".mysqli_connect_error());
+    }
  // TAMPILKAN DATA BARANG DAN HARGA
-$obat3=mysqli_query($koneksi, "SELECT * FROM obat");
-$jsArray = "var harga = new Array();\n"; 
+    $obat3=mysqli_query($koneksi, "SELECT * FROM obat");
+    $jsArray = "var harga = new Array();\n"; 
 
-?>
+    ?>
     
 
 
     <?php 
-include "koneksi.php";
-if(!$koneksi){
-  die ("Connection failed: ".mysqli_connect_error());
-}
+    include "koneksi.php";
+    if(!$koneksi){
+      die ("Connection failed: ".mysqli_connect_error());
+    }
  // TAMPILKAN DATA BARANG DAN HARGA
-$obat4=mysqli_query($koneksi, "SELECT * FROM obat");
-$jsArray = "var harga = new Array();\n"; 
+    $obat4=mysqli_query($koneksi, "SELECT * FROM obat");
+    $jsArray = "var harga = new Array();\n"; 
 
-?>
+    ?>
 
     <div id="content">
       <div class="panel box-shadow-none content-header">
@@ -88,208 +88,260 @@ $jsArray = "var harga = new Array();\n";
                 </div>
                 <div class="col-md-12">
                   <h3 align="center">Sesuaikan nama obat dengan keperluan tabel
-                  <hr></h3>
+                    <hr></h3>
 
-                </div>
-                <div class="col-md-12 panel-body">
-                  <div class="row">
-                   <div class="col-md-5">
-                    <label for="Nama dokter" class=" form-control-label">Nama Pasien</label>
-                    <select name="nama_pasien" class="form-control" required oninvalid="this.setCustomValidity('Field Tidak Boleh Kosong')" oninput="setCustomValidity('')"> 
-                      <option value="">--Nama Pasien--</option>
-
-                      <?php
-
-
-                      require_once 'koneksi.php';
-
-                      $query = "SELECT DISTINCT nama FROM pasien";
-                      $result = mysqli_query($koneksi, $query);
-                      ?>
-                      <?php 
-                      while ($data = mysqli_fetch_assoc($result)) {
-                        ?>
-
-                        <option value="<?php echo $data['nama'];?>"><?php echo $data['nama'] ;?></option>  
-
-                        <?php } ?>
-                        <div style="color:red"><?php echo isset($error['nama']) ? $error['nama'] : '';?></div>
-                      </select>
-
-
-                    </div>
-                    <div class="col-md-5">
-                      <label for="Nama dokter" class=" form-control-label">Nama Dokter</label>
-                      <select name="nama_dokter" class="form-control" required oninvalid="this.setCustomValidity('Field Tidak Boleh Kosong')" oninput="setCustomValidity('')"> 
-                        <option value="">--Nama Dokter--</option>
+                  </div>
+                  <div class="col-md-12 panel-body">
+                    <div class="row">
+                     <div class="col-md-5">
+                      <label for="Nama dokter" class=" form-control-label">Nama Pasien</label>
+                      <select name="nama_pasien" class="form-control" required oninvalid="this.setCustomValidity('Field Tidak Boleh Kosong')" oninput="setCustomValidity('')"> 
+                        <option value="">--Nama Pasien--</option>
 
                         <?php
 
 
                         require_once 'koneksi.php';
 
-                        $query = "SELECT DISTINCT nama_dokter FROM dokter";
+                        $query = "SELECT DISTINCT nama FROM pasien";
                         $result = mysqli_query($koneksi, $query);
                         ?>
                         <?php 
                         while ($data = mysqli_fetch_assoc($result)) {
                           ?>
 
-                          <option value="<?php echo $data['nama_dokter'];?>"><?php echo $data['nama_dokter'] ;?></option>  
+                          <option value="<?php echo $data['nama'];?>"><?php echo $data['nama'] ;?></option>  
 
                           <?php } ?>
-                          <div style="color:red"><?php echo isset($error['nama_dokter']) ? $error['nama_dokter'] : '';?></div>
+                          <div style="color:red"><?php echo isset($error['nama']) ? $error['nama'] : '';?></div>
                         </select>
+
+
+                      </div>
+                      <div class="col-md-5">
+                        <label for="Nama dokter" class=" form-control-label">Nama Dokter</label>
+                        <select name="nama_dokter" class="form-control" required oninvalid="this.setCustomValidity('Field Tidak Boleh Kosong')" oninput="setCustomValidity('')"> 
+                          <option value="">--Nama Dokter--</option>
+
+                          <?php
+
+
+                          require_once 'koneksi.php';
+
+                          $query = "SELECT DISTINCT nama_dokter FROM dokter";
+                          $result = mysqli_query($koneksi, $query);
+                          ?>
+                          <?php 
+                          while ($data = mysqli_fetch_assoc($result)) {
+                            ?>
+
+                            <option value="<?php echo $data['nama_dokter'];?>"><?php echo $data['nama_dokter'] ;?></option>  
+
+                            <?php } ?>
+                            <div style="color:red"><?php echo isset($error['nama_dokter']) ? $error['nama_dokter'] : '';?></div>
+                          </select>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+
+                        <div class="col-md-5">
+                         <label for="Nama Obat" class=" form-control-label">Nama Obat </label>
+                     
+                      <select class="form-control" onchange="myFunction(this.id)"  id="1" required>
+
+    <option value="">--Nama Obat--</option>
+                          <?php
+
+
+                          require_once 'koneksi.php';
+
+                          $query = "SELECT *  FROM obat";
+                          $result = mysqli_query($koneksi, $query);
+                          ?>
+                          <?php 
+                          while ($data = mysqli_fetch_assoc($result)) {
+                            ?>
+
+                            <option value="<?php echo $data['harga'];?>"><?php echo $data['nama_obat'] ;?></option>  
+
+                            <?php } ?>
+                            <div style="color:red"><?php echo isset($error['nama_obat']) ? $error['nama_obat'] : '';?></div>
+                          </select>
+                      </div>                            
+
+                      <div class="col-md-2">
+                       <div class="form-group">
+                        <label  class=" form-control-label">Harga</label>
+                        <input type="text" class="form-control" name="harga1" id="harga1" readonly="readonly" placeholder="Rp.">
+                       <input type="text"  name="obat1" id="obat1"  placeholder="Rp." hidden>
                       </div>
                     </div>
-                    <br>
-                    <div class="row">
-
-                      <div class="col-md-5">
-                       <label for="Nama Obat" class=" form-control-label">Nama Obat </label>
-                                    <select class="form-control" onchange="myFunction(this.id)" name="obat1" id="1">
-                                    <option value="">--Nama Obat--</option>
-              <?php if(mysqli_num_rows($obat1)) {?>
-                                      <?php while($row_brg= mysqli_fetch_array($obat1)) {?>
-                                          <option value="<?php echo $row_brg["nama_obat"]?>"> <?php echo $row_brg["nama_obat"]?> </option>
-                                   
-                                  <?php } ?>
-              </select>
-                                  </div>                            
-
+                    <div class="col-md-1">
+                      <h1>x</h1>
+                    </div>
                     <div class="col-md-2">
-                     <div class="form-group">
-                      <label  class=" form-control-label">Harga</label>
-                      <input type="text" class="form-control" name="harga1" id="harga1" readonly="readonly" placeholder="Rp.">
+                      <label class="form-control-label">Jumlah</label>
+                      <input type="number" class="form-control" name="jumlah1" required>
                     </div>
                   </div>
-                  <div class="col-md-1">
-                    <h1>x</h1>
-                  </div>
+
+
+                  <div class="row">
+
+                    <div class="col-md-5">
+                     <label for="Nama Obat" class=" form-control-label">Nama Obat </label>
+                      <select class="form-control" onchange="myFunction(this.id)"  id="2" >
+
+    <option value="">--Nama Obat--</option>
+                          <?php
+
+
+                          require_once 'koneksi.php';
+
+                          $query = "SELECT *  FROM obat";
+                          $result = mysqli_query($koneksi, $query);
+                          ?>
+                          <?php 
+                          while ($data = mysqli_fetch_assoc($result)) {
+                            ?>
+
+                            <option value="<?php echo $data['harga'];?>"><?php echo $data['nama_obat'] ;?></option>  
+
+                            <?php } ?>
+                            <div style="color:red"><?php echo isset($error['nama_obat']) ? $error['nama_obat'] : '';?></div>
+                          </select>
+                  </div>                            
+
                   <div class="col-md-2">
-                    <label class="form-control-label">Jumlah</label>
-                    <input type="number" class="form-control" name="jumlah1">
+                   <div class="form-group">
+                    <label  class=" form-control-label">Harga</label>
+                    <input type="text" class="form-control" name="harga2" id="harga2" readonly="readonly" placeholder="Rp.">
+                     <input type="text"  name="obat2" id="obat2"  placeholder="Rp." hidden>
                   </div>
                 </div>
-                 <div class="row">
-
-                      <div class="col-md-5">
-                       <label for="Nama Obat" class=" form-control-label">Nama Obat </label>
-                                    <select class="form-control" onchange="myFunction(this.id)" name="obat2" id="2">
-                                    <option value="">--Nama Obat--</option>
-              
-                        <?php if(mysqli_num_rows($obat2)) {?>
-                                      <?php while($row_brg= mysqli_fetch_array($obat2)) {?>
-                                          <option value="<?php echo $row_brg["harga"]?>"> <?php echo $row_brg["nama_obat"]?> </option>
-                                      <?php $jsArray .= "harga['" . $row_brg['nama_obat'] . "'] = {harga:'" . addslashes($row_brg['harga']) . "'};\n"; } ?>
-                                  <?php } ?>
-              </select>
-                                  </div>                            
-
-                    <div class="col-md-2">
-                     <div class="form-group">
-                      <label  class=" form-control-label">Harga</label>
-                      <input type="text" class="form-control" name="harga2" id="harga2" readonly="readonly" placeholder="Rp.">
-                    </div>
-                  </div>
-                  <div class="col-md-1">
-                    <h1>x</h1>
-                  </div>
-                  <div class="col-md-2">
-                    <label class="form-control-label">Jumlah</label>
-                    <input type="number" class="form-control" name="jumlah2">
-                  </div>
+                <div class="col-md-1">
+                  <h1>x</h1>
                 </div>
-                <div class="row">
-
-                      <div class="col-md-5">
-                       <label for="Nama Obat" class=" form-control-label">Nama Obat </label>
-                                    <select class="form-control" onchange="myFunction(this.id)" name="obat3" id="3">
-                                    <option value="">--Nama Obat--</option>
-              
-                        <?php if(mysqli_num_rows($obat3)) {?>
-                                      <?php while($row_brg= mysqli_fetch_array($obat3)) {?>
-                                          <option value="<?php echo $row_brg["harga"]?>"> <?php echo $row_brg["nama_obat"]?> </option>
-                                      <?php $jsArray .= "harga['" . $row_brg['nama_obat'] . "'] = {harga:'" . addslashes($row_brg['harga']) . "'};\n"; } ?>
-                                  <?php } ?>
-              </select>
-                                  </div>                            
-
-                    <div class="col-md-2">
-                     <div class="form-group">
-                      <label  class=" form-control-label">Harga</label>
-                      <input type="text" class="form-control" name="harga3" id="harga3" readonly="readonly" placeholder="Rp.">
-                    </div>
-                  </div>
-                  <div class="col-md-1">
-                    <h1>x</h1>
-                  </div>
-                  <div class="col-md-2">
-                    <label class="form-control-label">Jumlah</label>
-                    <input type="number" class="form-control" name="jumlah3">
-                  </div>
+                <div class="col-md-2">
+                  <label class="form-control-label">Jumlah</label>
+                  <input type="number" class="form-control" name="jumlah2">
                 </div>
-                 <div class="row">
+              </div>
+              <div class="row">
 
-                      <div class="col-md-5">
-                       <label for="Nama Obat" class=" form-control-label">Nama Obat </label>
-                                    <select class="form-control" onchange="myFunction(this.id)" name="obat4" id="4">
-                                    <option value="">--Nama Obat--</option>
-              
-                        <?php if(mysqli_num_rows($obat4)) {?>
-                                      <?php while($row_brg= mysqli_fetch_array($obat4)) {?>
-                                          <option value="<?php echo $row_brg["harga"]?>"> <?php echo $row_brg["nama_obat"]?> </option>
-                                      <?php $jsArray .= "harga['" . $row_brg['nama_obat'] . "'] = {harga:'" . addslashes($row_brg['harga']) . "'};\n"; } ?>
-                                  <?php } ?>
-              </select>
-                                  </div>                            
-
-                    <div class="col-md-2">
-                     <div class="form-group">
-                      <label  class=" form-control-label">Harga</label>
-                      <input type="text" class="form-control" name="harga4" id="harga4" readonly="readonly" placeholder="Rp.">
-                    </div>
-                  </div>
-                  <div class="col-md-1">
-                    <h1>x</h1>
-                  </div>
-                  <div class="col-md-2">
-                    <label class="form-control-label">Jumlah</label>
-                    <input type="number" class="form-control" name="jumlah4">
-                  </div>
-                </div>
-                <div class="row">                
                 <div class="col-md-5">
-                   <label>Jumlah Uang</label>
-                              <div class="input-group">
+                 <label for="Nama Obat" class=" form-control-label">Nama Obat </label>
+                         <select class="form-control" onchange="myFunction(this.id)"  id="3">
 
-                            <span class="input-group-addon" id="basic-addon1">Rp.</span>
-                            <input type="text" name="jumlah_uang" class="form-control" aria-describedby="basic-addon1" >
-                  </div>
+    <option value="">--Nama Obat--</option>
+                          <?php
 
 
+                          require_once 'koneksi.php';
+
+                          $query = "SELECT *  FROM obat";
+                          $result = mysqli_query($koneksi, $query);
+                          ?>
+                          <?php 
+                          while ($data = mysqli_fetch_assoc($result)) {
+                            ?>
+
+                            <option value="<?php echo $data['harga'];?>"><?php echo $data['nama_obat'] ;?></option>  
+
+                            <?php } ?>
+                            <div style="color:red"><?php echo isset($error['nama_obat']) ? $error['nama_obat'] : '';?></div>
+                          </select>
+              </div>                            
+
+              <div class="col-md-2">
+               <div class="form-group">
+                <label  class=" form-control-label">Harga</label>
+                <input type="text" class="form-control" name="harga3" id="harga3" readonly="readonly" placeholder="Rp.">
+                  <input type="text"  name="obat3" id="obat3"  placeholder="Rp." hidden>
               </div>
-              </div>
+            </div>
+            <div class="col-md-1">
+              <h1>x</h1>
+            </div>
+            <div class="col-md-2">
+              <label class="form-control-label">Jumlah</label>
+              <input type="number" class="form-control" name="jumlah3">
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="col-md-5">
+             <label for="Nama Obat" class=" form-control-label">Nama Obat </label>
+             <select class="form-control" onchange="myFunction(this.id)"  id="4">
+
+    <option value="">--Nama Obat--</option>
+                          <?php
 
 
+                          require_once 'koneksi.php';
 
+                          $query = "SELECT *  FROM obat";
+                          $result = mysqli_query($koneksi, $query);
+                          ?>
+                          <?php 
+                          while ($data = mysqli_fetch_assoc($result)) {
+                            ?>
 
+                            <option value="<?php echo $data['harga'];?>"><?php echo $data['nama_obat'] ;?></option>  
 
+                            <?php } ?>
+                            <div style="color:red"><?php echo isset($error['nama_obat']) ? $error['nama_obat'] : '';?></div>
+                          </select>
+          </div>                            
 
-            <br>
-
-            <button type="submit" class="btn btn-warning">Kirim</button>
-          </form>
-
-
-          <a class="btn btn-primary" href="list.pasien.php">Kembali </a>
+          <div class="col-md-2">
+           <div class="form-group">
+            <label  class=" form-control-label">Harga</label>
+            <input type="text" class="form-control" name="harga4" id="harga4" readonly="readonly" placeholder="Rp.">
+            <input type="text"  name="obat4" id="obat4"  placeholder="Rp." hidden>
+          </div>
         </div>
-        <hr>
-      
-     
+        <div class="col-md-1">
+          <h1>x</h1>
+        </div>
+        <div class="col-md-2">
+          <label class="form-control-label">Jumlah</label>
+          <input type="number" class="form-control" name="jumlah4">
+        </div>
+      </div>
+      <div class="row">                
+        <div class="col-md-5">
+         <label>Jumlah Uang</label>
+         <div class="input-group">
+
+          <span class="input-group-addon" id="basic-addon1">Rp.</span>
+          <input type="number" name="jumlah_uang" class="form-control" aria-describedby="basic-addon1" >
+        </div>
+
+
       </div>
     </div>
-  </div>
+
+
+
+
+
+
+    <br>
+
+    <button type="submit" class="btn btn-warning">Kirim</button>
+  </form>
+
+
+  <a class="btn btn-primary" href="list.pasien.php">Kembali </a>
+</div>
+<hr>
+
+
+</div>
+</div>
+</div>
 </div>
 
 
@@ -939,11 +991,25 @@ $jsArray = "var harga = new Array();\n";
 
 <script type="text/javascript">
  function myFunction(id) {
+  console.log(id)
   var x = document.getElementById(id).value;
   document.getElementById("harga" + id).value = x;
+
+   //var z = document.getElementById(id).value('nama_obat');
+   var z =$('#'+id+' option:selected').text()
+  document.getElementById("obat" + id).value = z;
+
 }
 
+
+
 </script>
+
+<script type="text/javascript">
+  
+</script>
+</script>
+
 <script src="asset/js/main.js"></script>
 <script type="text/javascript">
   $(function() {
