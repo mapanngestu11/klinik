@@ -15,6 +15,20 @@
     <!-- end: Left Menu -->
 
     <!--<![endif]-->
+
+    <?php
+
+include 'koneksi.php';
+session_start();
+
+$id_resep = $_GET['id_resep'];
+
+  $sql = "UPDATE `resep` SET `status` = 'Kwitansi' WHERE `resep`.`id_resep` = '$id_resep';";
+
+  $tambahdata=mysqli_query($koneksi,$sql);
+
+
+?>
     <?php 
     include "koneksi.php";
     if(!$koneksi){

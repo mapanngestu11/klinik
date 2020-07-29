@@ -149,13 +149,24 @@
 
                   ?>
                   <br>
-                  <a href="print-kwitansi.php" class="btn btn-primary btn-round"  style="float: right;"><span class="icons icon-printer"></span> Print</a>
+            <?php 
+                include 'koneksi.php';
+                $no = 1;
+                $nama_pasien = $_GET['nama_pasien'];
+                $data = mysqli_query($koneksi,"Select * FROM Kwitansi Where nama_pasien = '$nama_pasien'");
+                     while($d = mysqli_fetch_array($data)){
+                      ?>
+                  <a href="cetak-kwitansi.php?nama_pasien=<?php echo $d['nama_pasien']?>" class="btn btn-primary btn-round"  style="float: right;"><span class="icons icon-printer"></span> Print</a>
+                
+                  <?php
+                  }?>
                 </div>
               </div>
             </div>
           </div>
         </form>
       </div>
+
       <!-- end: content -->
 
 

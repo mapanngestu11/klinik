@@ -44,9 +44,9 @@
          <div class="panel box-shadow-none content-header">
           <div class="panel-body">
             <div class="col-md-12">
-              <h3 class="animated fadeInLeft">Data Obat</h3>
+              <h3 class="animated fadeInLeft">Data Akun</h3>
               <p class="animated fadeInDown">
-                Data Obat <span class="fa-angle-right fa"></span> Lihat Semua
+                Akun <span class="fa-angle-right fa"></span> Lihat Semua
               </p>
             </div>
           </div>
@@ -54,88 +54,40 @@
         <div class="col-md-12 top-20 padding-0">
           <div class="col-md-12">
             <div class="panel">
-
               <div class="panel-heading"><h3>Data Tables</h3></div>
-
               <div class="panel-body">
-                <button data-toggle="modal" data-target="#exampleModalLabel" class="btn btn-primary" ><i class="fa fa-plus-square"></i> Tambah</button>
-                   
-                   <!-- Modal Buton -->
-                   <div id="exampleModalLabel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-                  <div role="document" class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 id="exampleModalLabel" class="modal-title">Obat - Obatan</h4>
-                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                      </div>
-                      <div class="modal-body">
-                        
-                        <form action="add_obat.php" method="post">
-                          <div class="form-group">
-                            <label>Nama Obat</label>
-                            <input type="text" name="nama_obat" class="form-control" placeholder="Nama Obat" required>
-                            </div>
-                            <div class="form-group">
-                              <label>Jumlah</label>
-                            <input type="number" name="jumlah" class="form-control"  required>
-                            </div>
-                            <div class="form-group">
-                            <label>Harga</label>
-                              <div class="input-group">
+               
 
-                            <span class="input-group-addon" id="basic-addon1">Rp.</span>
-                            <input type="text" name="harga" class="form-control" aria-describedby="basic-addon1" >
-                            </div>
-                            </div>
-                            <div class="form-group">
-                              <label>Keterangan</label>
-                              <input type="text" name="keterangan" class="form-control" placeholder="keterangan obat">
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                            <input type="submit" class="btn btn-primary" value="Simpan">
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <br>
+              
                 <!-- akhir -->
                 <div class="responsive-table">
                   <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>Nama obat</th>
-                        <th>Jumlah</th>
-                        <th>Harga</th>
-                       
-                       <th>Keterangan</th>
-                        <th>Tanggal Di Perbaharui</th>
-                       <th>Edit</th>
+                        <th>Nama Pasien</th>
+                        <th>Riwayat Penyakit</th>
+                        <th>Dokter</th>
+                        <th>Tanggal</th>
                         <th>Hapus</th>
+                      
                       </tr>
                     </thead>
                     <tbody>
                      <?php 
                      include 'koneksi.php';
                      $no = 1;
-                     $data = mysqli_query($koneksi,"Select * FROM obat");
+                     $data = mysqli_query($koneksi,"SELECT * FROM rekam_medis");
                      while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
                       
                         <td><?php echo $no++ ;?></td>
-                        <td><?php echo $d['nama_obat']; ?></td>
-                          <td><?php echo $d['jumlah']; ?></td>
-                        <td><?php echo $d['harga']; ?></td>
-                          
-                         <td><?php echo $d['keterangan']; ?></td>
+                        <td><?php echo $d['nama']; ?></td>
+                        <td><?php echo $d['penyakit']; ?></td>
+                        <td><?php echo $d['nama_dokter']; ?></td>
                          <td><?php echo $d['tanggal']; ?></td>
-                        
-                          <td align="center"><a href="#" data-id="<?php echo $d['id_obat']; ?>"class="btn btn-round btn-detail btn-warning btn-sm"data-toggle="modal" data-target="#detailPesan"><i class="fa fa-pencil"></i> Edit</a></td>
+                      
                         <td align="center"><a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ?')){ location.href='hapus_data_dokter.php?id_dokter=<?php echo $d['id_dokter']; ?>' }" class="btn btn-round btn-danger"><i class="fa fa-trash"></i> Hapus</a></td>
                       <?php 
                   }
@@ -154,28 +106,22 @@
     </div>
     <!-- end: content -->
     <!-- Modal start -->
-<div class="modal fade" id="detailPesan" tabindex="-1" role="dialog" aria-labelledby="Tambah Barang" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-      <div class="modal-content">
+   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
       <div class="modal-header">
-          <h5 class="modal-title" id="Tambah Barang">Edit Obat</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
       </div>
-          <form action="update-obat.php" method="post" >
-          <div class="modal-body" id="bodyDetail">
-
-          </div>
-
-          <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Kirim</button>
-          </form> 
-          </div>     
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
-
-    </div>
- </div>
+  </div>
+</div>
     <!-- Modal End -->
 
     <!-- start: right menu -->
@@ -819,16 +765,6 @@
     $('#datatables-example').DataTable();
   });
 </script>
-<script type="text/javascript">
-    $('.btn-detail').click(function(){
-      $.get('detail_obat.php?id_obat='+$(this).data('id'),function(data){
-        console.log(data)
-        $('#bodyDetail').html(data)
-        $('#bodyDetail :input')
-      })
-    })
-    </script>
-
 <!-- end: Javascript -->
 </body>
 </html>

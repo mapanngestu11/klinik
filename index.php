@@ -15,11 +15,9 @@
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-7 hidden-xs">
                             <div class="pull-right">
-                                <span class="top-link"><i class="fa fa-phone"></i> +00 (123) 456 7890</span>
-                                <span class="top-link"><i class="fa fa-envelope"></i> info@broker.com</span>
-                                <span class="navigation-search top-link">
-              <a href="#"><i class="fa fa-search"></i></a>
-            </span>
+                                <span class="top-link"><i class="fa fa-phone"></i> (021) 53131072</span>
+                               
+                 
                             </div>
                         </div>
                 </div>
@@ -69,6 +67,12 @@
       </div>
       <div class="modal-body">
        <form action="regis_pasien.php" method="post">
+            <div class="row">
+              <div class="col-md-8">
+                  <label>NIK</label>
+                  <input type="text" name="nik" class="form-control" placeholder ="nik" >
+              </div>
+            </div>
             <div class="row">
             <div class="col-md-6">
            <label>Nama Lengkap</label>

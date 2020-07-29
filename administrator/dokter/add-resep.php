@@ -10,12 +10,12 @@ $nama_pasien  = $_POST['nama_pasien'];
 $resep = $_POST['resep'];
 $tanggal = date("d-M-Y");
 $waktu = date("h:i:s");
+$status = $_POST['status'];
 
 
 
-
-$sql = "INSERT INTO `resep` (`id_resep`,`nama_dokter`,`nama_pasien`,`resep`,`tanggal`,`waktu`) 
-		VALUES (NULL,'$nama_dokter','$nama_pasien','$resep','$tanggal','$waktu');";
+$sql = "INSERT INTO `resep` (`id_resep`,`nama_dokter`,`nama_pasien`,`resep`,`tanggal`,`waktu`,`status`) 
+		VALUES (NULL,'$nama_dokter','$nama_pasien','$resep','$tanggal','$waktu','$status');";
 	$tambahdata = mysqli_query($koneksi,$sql);
 
 	if (!$tambahdata) {

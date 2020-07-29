@@ -19,7 +19,7 @@
   <link href="asset/css/style.css" rel="stylesheet">
   <!-- end: Css -->
 
-  <link rel="shortcut icon" href="asset/img/logomi.png">
+  <link rel="shortcut icon" href="asset/img/logo-klinik.png">
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -75,7 +75,7 @@
                      <?php 
                      include 'koneksi.php';
                      $no = 1;
-                     $data = mysqli_query($koneksi,"Select * FROM pasien GROUP BY kode_pasien");
+                     $data = mysqli_query($koneksi,"Select * FROM pasien ");
                      while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -87,7 +87,7 @@
                         <td><?php echo $d['jenkel']; ?></td>
                         <td><?php echo $d['keterangan']; ?></td>
 
-                        <td align="center"><a href="detail_pasien.php?kode_pasien=<?php echo $d['kode_pasien']; ?>" class="btn btn-round btn-info"><i class="fa fa-search"></i> Detail</a></td>
+                        <td align="center"><a href="detail_pasien.php?nik=<?=$d['nik']?> & kode_pasien=<?=$d['kode_pasien']?>" class="btn btn-round btn-info"><i class="fa fa-search"></i> Detail</a></td>
                         <td align="center"><a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ?')){ location.href='hapus_data_pasien.php?id_pasien=<?php echo $d['id_pasien']; ?>' }" class="btn btn-round btn-danger"><i class="fa fa-trash"></i> Hapus</a></td>
                     <?php 
                   }

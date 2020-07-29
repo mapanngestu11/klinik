@@ -19,7 +19,7 @@
   <link href="asset/css/style.css" rel="stylesheet">
   <!-- end: Css -->
 
-  <link rel="shortcut icon" href="asset/img/logomi.png">
+  <link rel="shortcut icon" href="asset/img/logo-klinik.png">
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -76,7 +76,7 @@
                      include 'koneksi.php';
                     $tgl = date("d-M-Y");
                      $no = 1;
-                     $data = mysqli_query($koneksi,"SELECT * FROM `resep` Where tanggal ='$tgl' ORDER BY `waktu` ASC");
+                     $data = mysqli_query($koneksi,"SELECT * FROM `resep` Where tanggal ='$tgl' AND status = 'dokter' ORDER BY `waktu` ASC");
                      while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -86,8 +86,7 @@
                         <td><?php echo $d['resep']; ?></td>
                         <td><?php echo $d['tanggal']; ?></td>
                        
-
-                        <td align="center"><a href=""  data-toggle="modal" data-target="#exampleModal"  class="btn btn-round btn-success"><i class="fa fa-pencil"></i> Buat</a></td>
+                        <td align="center"><a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ?')){ location.href='add.kwitansi.php?id_resep=<?php echo $d['id_resep']; ?>' }" class="btn btn-round btn-danger"><i class="fa fa-pencil"></i> Buat</a></td>
                          <td align="center"><a href="#" data-id="<?php echo $d['id_resep']; ?>"class="btn btn-round btn-detail btn-primary btn-sm"data-toggle="modal" data-target="#detailPesan"><i class="fa fa-search"></i> Detail</a></td>
                         <td align="center"><a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ?')){ location.href='hapus_resep.php?id_resep=<?php echo $d['id_resep']; ?>' }" class="btn btn-round btn-danger"><i class="fa fa-trash"></i> Hapus</a></td>
                     <?php 

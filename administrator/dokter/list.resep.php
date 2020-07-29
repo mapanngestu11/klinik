@@ -123,6 +123,7 @@
                                 <div class="form-group">
                                   <label for="Jenis" class=" form-control-label">Resep yang diberikan</label>
                                   <textarea name="resep" class="form-control"></textarea>
+                                  <input type="text" name="status" value="dokter" readonly="" hidden>
                                 </div>
                                
                       

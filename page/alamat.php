@@ -20,8 +20,7 @@
                         <div class="cta-address">
                             <i class="fa fa-map-marker"></i>
                             <span class="address">
-                              4451 Jett Lane Irvine, 
-                              CA 92614
+                              Jl. Swadaya No.27, Paku Jaya, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15220
                             </span>
                         </div>
                     </div>

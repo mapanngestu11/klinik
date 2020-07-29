@@ -29,8 +29,9 @@
                 </div>
                  <?php
                 include'koneksi.php';
+                $nik         = $_GET['nik'];
                 $kode_pasien = $_GET['kode_pasien'];
-                $data = mysqli_query ($koneksi, "SELECT * FROM pasien where kode_pasien ='$kode_pasien'");
+                $data = mysqli_query ($koneksi, "SELECT * FROM pasien where kode_pasien ='$kode_pasien' OR nik = '$nik' GROUP BY kode_pasien");
                 while ($d = mysqli_fetch_array($data)) {
             # code...
           
@@ -134,16 +135,7 @@
                 <hr style="bold">
                 <div class="row">
                   <div class="col-md-3">
-                     <?php
-                include'koneksi.php';
-                $kode_pasien = $_GET['kode_pasien'];
-                 $data = mysqli_query ($koneksi, "SELECT * FROM pasien where kode_pasien ='$kode_pasien'");
-                while ($d = mysqli_fetch_array($data)) {
-                ?>
-                    <a href="print-data.php?kode_pasien=<?php echo $d['kode_pasien']; ?>" class="btn btn-info" style="margin-left:50px"><i class="fa fa-file-text"></i> Print</a>
-                  <?php 
-                }
-                ?>
+                  
 
                   </div>
                 </div>
